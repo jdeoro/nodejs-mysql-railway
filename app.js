@@ -4,11 +4,11 @@ import { PORT } from './config.js'
 
 const app = express()
 
-app.listen(3000)
+app.listen(PORT)
 console.log("server running on port "+PORT)
 
 app.get('/dummy' , async (req,res) => {
-    const result = "servidor está up"
+    const result = "servidor funcionando en "+PORT
     res.json(result)
 } )
 
