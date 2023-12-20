@@ -1,18 +1,12 @@
 import express from 'express'
-import { pool} from './db.js'
-import { PORT } from './config.js'
+
+import { PORT } from './src/config.js'
+import router from './src/routes/usuarios.routes.js'
 
 const app = express()
 
 app.listen(PORT)
 console.log("server running on port "+PORT)
 
-app.get('/dummy' , async (req,res) => {
-    const result = "servidor funcionando en "+PORT
-    res.json(result)
-} )
+app.use(router)
 
-app.get('/consulta' , async (req,res) => {
-    const [rows] = await pool.query('SELECT count(*) FROM usuarios')
-    res.json(rows)
-} )
