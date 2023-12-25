@@ -17,5 +17,44 @@ export const insertusuario = async (req,res) => {
     query( 'INSERT into usuario ( name,clave,email,state) values ( ?,?,?,?)',[name,clave,email,state]) 
     //console.log(rows)
     const {insertId}  = rows
-    res.send("Post succes!, registro nro." + insertId   )
+    if ( rows.affectedRows == 1 ){
+        res.status(200).json({
+            resultado: "Succes!",
+            id: insertId,
+            name
+        })
+    } else {
+        res.status(404).json("Failed!")
+    }
+}
+
+export const editusuario = async (req,res) => {
+    const { name,email} = req.body
+    const { id } = req.params
+    // console.log(id)
+
+     const [rows] = await pool.
+    query( 'UPDATE usuario set name = ? , email = ? where id=? ',[name,email,id]) 
+
+    if ( rows.affectedRows == 1 ){
+        res.status(200).json("Succes!")
+    } else {
+        res.status(404).json("Failed!")
+    }
+    
+}
+
+export const deleteusuario = async (req,res) => {
+    const { id } = req.params
+    // console.log(id)
+
+     const [rows] = await pool.
+    query( 'DELETE from usuario where id=? ',[id]) 
+
+    if ( rows.affectedRows == 1 ){
+        res.status(200).json("Succes!")
+    } else {
+        res.status(404).json("Failed!")
+    }
+    
 }
