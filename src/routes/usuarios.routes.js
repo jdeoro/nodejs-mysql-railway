@@ -1,18 +1,9 @@
 import {Router} from 'express'
-import { PORT } from '../config.js'
-import { pool} from '../db.js'
-
+import { consulta, listadodeusuarios } from '../controllers/usuarios.controller.js'
 
 const router = Router()
 
-router.get('/dummy' , async (req,res) => {
-    const result = "servidor funcionando en "+PORT
-    res.json(result)
-} )
-
-router.get('/api/usuarios' , async (req,res) => {
-    const [rows] = await pool.query('SELECT count(*) FROM usuarios')
-    res.json(rows)
-} )
+router.get('/dummy' , consulta )
+router.get('/api/usuarios' , listadodeusuarios)
 
 export default router
