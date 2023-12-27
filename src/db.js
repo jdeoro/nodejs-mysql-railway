@@ -7,7 +7,7 @@ export const pool = createPool({
     password:DB_PASSWORD,
     database:DB_NAME,
     port:DB_PORT,
-    waitForConnections: true,
+    ssl: "Amazon RDS"
     
 })
 
