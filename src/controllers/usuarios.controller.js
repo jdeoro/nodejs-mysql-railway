@@ -1,9 +1,17 @@
-import { PORT,DB_HOST } from "../config.js"
+import { DB_PORT,PORT,DB_HOST,DB_USER,DB_PASSWORD,DB_NAME } from "../config.js"
+
 import { pool} from '../db.js'
 
 export const consulta = async (req,res) => {
-    const result = "servidor funcionando en "+DB_HOST
-    res.json(result)
+
+    res.json({
+        "Port" : PORT,
+        "DB_HOST" : DB_HOST,
+        "DB_USER" : DB_USER,
+        "DB_NAME" : DB_NAME,
+        "DB_PASSWORD": DB_PASSWORD,
+        "DB_PORT": DB_PORT
+    })
 } 
 
 export const listadodeusuarios =  async (req,res) => {
