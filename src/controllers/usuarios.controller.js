@@ -1,8 +1,8 @@
-import { PORT } from "../config.js"
+import { PORT,DB_HOST } from "../config.js"
 import { pool} from '../db.js'
 
 export const consulta = async (req,res) => {
-    const result = "servidor funcionando en "+PORT
+    const result = "servidor funcionando en "+DB_HOST
     res.json(result)
 } 
 
