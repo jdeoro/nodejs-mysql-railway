@@ -15,8 +15,15 @@ export const consulta = async (req,res) => {
 } 
 
 export const listadodeusuarios =  async (req,res) => {
-    const [rows] = await pool.query('SELECT * FROM usuario')
-    res.json(rows)
+    try {
+        const [rows] = await pool.query('SELECT * FROM usuario')
+        res.json(rows)
+            
+    } catch (error) {
+        res.json(error)        
+    }    
+    //const [rows] = await pool.query('SELECT * FROM usuario')
+    //res.json(rows)
 }
 
 export const insertusuario = async (req,res) => {
