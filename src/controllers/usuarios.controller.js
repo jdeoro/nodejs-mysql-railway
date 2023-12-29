@@ -1,6 +1,13 @@
 import { DB_PORT,PORT,DB_HOST,DB_USER,DB_PASSWORD,DB_NAME } from "../config.js"
+import { Pool } from 'pg'
 
-import { pool} from '../db.js'
+const pool = new Pool({
+    host:DB_HOST,
+    user:DB_USER,
+    password:DB_PASSWORD,
+    database:DB_NAME,
+    port:DB_PORT
+  })
 
 export const consulta = async (req,res) => {
 
@@ -16,7 +23,7 @@ export const consulta = async (req,res) => {
 const client = await pool.connect()
 
 export const listadodeusuarios =  async (req,res) => {
-    const [rows] = await client.query('SELECT * FROM usuario')
+    const [rows] = await pool.query('SELECT * FROM usuario')
     res.json(rows)
     client.release()
 }
