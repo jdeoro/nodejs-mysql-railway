@@ -14,12 +14,7 @@ const pool = new Pool({
 export const consulta = async (req,res) => {
 
     res.json({
-        "Port" :  PORT,
-        "DB_HOST" : pool.host,
-        "DB_USER" : pool.user,
-        "DB_NAME" : pool.database,
-        "DB_PASSWORD": pool.password,
-        "DB_PORT": pool.port
+        "Pool" :  pool
     })
 } 
 const client = await pool.connect()
