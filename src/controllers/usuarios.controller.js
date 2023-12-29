@@ -20,7 +20,7 @@ export const consulta = async (req,res) => {
 const client = await pool.connect()
 
 export const listadodeusuarios =  async (req,res) => {
-    const [rows] = await pool.query('SELECT * FROM usuario')
+    const result = await pool.query('SELECT * FROM usuario')
     res.json(rows)
 }
 
