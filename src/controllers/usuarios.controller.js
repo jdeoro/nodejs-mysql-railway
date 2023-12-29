@@ -1,5 +1,7 @@
 import { DB_PORT,PORT,DB_HOST,DB_USER,DB_PASSWORD,DB_NAME } from "../config.js"
-import { Pool } from 'pg'
+
+import pkg from 'pg';
+const { Pool } = pkg;
 
 const pool = new Pool({
     host:DB_HOST,
@@ -12,12 +14,12 @@ const pool = new Pool({
 export const consulta = async (req,res) => {
 
     res.json({
-        "Port" : PORT,
-        "DB_HOST" : DB_HOST,
-        "DB_USER" : DB_USER,
-        "DB_NAME" : DB_NAME,
-        "DB_PASSWORD": DB_PASSWORD,
-        "DB_PORT": DB_PORT
+        "Port" :  PORT,
+        "DB_HOST" : pool.host,
+        "DB_USER" : pool.user,
+        "DB_NAME" : pool.database,
+        "DB_PASSWORD": pool.password,
+        "DB_PORT": pool.port
     })
 } 
 const client = await pool.connect()
