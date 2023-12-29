@@ -21,7 +21,8 @@ const client = await pool.connect()
 
 export const listadodeusuarios =  async (req,res) => {
     const result = await pool.query('SELECT * FROM usuario')
-    res.json(result)
+    const {rows} = result
+    res.json(rows)
 }
 
 export const insertusuario = async (req,res) => {
