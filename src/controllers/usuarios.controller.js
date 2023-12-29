@@ -13,10 +13,12 @@ export const consulta = async (req,res) => {
         "DB_PORT": DB_PORT
     })
 } 
+const client = await pool.connect()
 
 export const listadodeusuarios =  async (req,res) => {
-    const [rows] = await pool.query('SELECT * FROM usuario')
+    const [rows] = await client.query('SELECT * FROM usuario')
     res.json(rows)
+    client.release()
 }
 
 export const insertusuario = async (req,res) => {
