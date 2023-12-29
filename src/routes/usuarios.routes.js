@@ -7,7 +7,7 @@ import { consulta,
 
 const router = Router()
 
-router.get('/dummy' , consulta )
+router.get('/' , consulta )
 router.get('/api/usuarios' , listadodeusuarios)
 router.post('/api/creausuario' , insertusuario)
 router.put('/api/editusuario/:id' , editusuario)
