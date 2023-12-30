@@ -30,17 +30,17 @@ export const insertusuario = async (req,res) => {
     const result= await pool.query( 'INSERT into usuario ( name,clave,email,state) values ( $1,$2,$3,$4)',[name,clave,email,state]) 
     const {rowCount} = result
 
-    res.json(result)
+    res.json(rowCount)
 
-    if ( rowCount == 1 ){
-        res.status(200).json({
-            resultado: "Succes!",
-            id: insertId,
-            name
-        })
-    } else {
-        res.status(404).json("Failed!")
-    }
+    // if ( rowCount == 1 ){
+    //     res.status(200).json({
+    //         resultado: "Succes!",
+    //         id: insertId,
+    //         name
+    //     })
+    // } else {
+    //     res.status(404).json("Failed!")
+    // }
 }
 
 export const editusuario = async (req,res) => {
