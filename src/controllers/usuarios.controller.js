@@ -27,8 +27,7 @@ export const listadodeusuarios =  async (req,res) => {
 
 export const insertusuario = async (req,res) => {
     const { name,clave,email,state} = req.body
-    const [rows] = await pool.
-    query( 'INSERT into usuario ( name,clave,email,state) values ( ?,?,?,?)',[name,clave,email,state]) 
+    const {rows} = await pool.query( 'INSERT into usuario ( name,clave,email,state) values ( ?,?,?,?)',[name,clave,email,state]) 
     //console.log(rows)
     const {insertId}  = rows
     if ( rows.affectedRows == 1 ){
